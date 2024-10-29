@@ -1,0 +1,114 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 400px;
+  text-align: center;
+}
+
+.roulette-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.roulette-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: auto;
+}
+
+.arrow {
+  position: absolute;
+  top: -20px; /* 화살표를 조금 더 아래로 이동 */
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg); /* 중앙을 가리키도록 회전 */
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #333;
+  z-index: 10;
+}
+
+#roulette {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 8px solid #333;
+  background: conic-gradient(
+    #ff3333 0deg 60deg,
+    #33ff33 60deg 120deg,
+    #3333ff 120deg 180deg,
+    #ffff33 180deg 240deg,
+    #ff66ff 240deg 300deg,
+    #66ccff 300deg 360deg
+  );
+  transition: transform 8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1em;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.result-box {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5em;
+  padding: 20px;
+  color: #fff;
+  background-color: #333;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  display: none; /* 처음에 완전히 숨김 */
+  animation: showResult 2s forwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes showResult {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.hidden {
+  display: none;
+}
